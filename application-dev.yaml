@@ -4,19 +4,19 @@ spring:
   url: jdbc:postgresql://localhost:5432/vemsDB
   username: postgres
   password: manager
-  
-  jpa:
-   show-sql: true
-   hibernate:
-    ddl-auto: update
-    properties:
-     hibernate:
-      format_sql: true
-      dialect: org.hibernate.dialect.PostgreSQLDialect  
 
-   sql:
-    init:
-     mode: always
+ jpa:
+  database: POSTGRESQL
+  database-platform: org.hibernate.dialect.PostgreSQLDialect
+  show-sql: true
+  hibernate:
+   ddl-auto: update   
+  properties:
+   format-sql: true
+
+ sql:
+  init:
+   mode: always
 
 eureka:
  instance:
