@@ -5,6 +5,10 @@ spring:
   username: postgres
   password: manager
 
+  hikari:
+   data-source-properties:
+    stringtype: unspecified
+
  jpa:
   database: POSTGRESQL
   database-platform: org.hibernate.dialect.PostgreSQLDialect
