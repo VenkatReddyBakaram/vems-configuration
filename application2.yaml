@@ -7,6 +7,7 @@ spring:
     hikari:
       data-source-properties:
         stringtype: unspecified
+
   jpa:
     database: POSTGRESQL
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -15,23 +16,19 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        jdbc.batch_size: 50  # Set batch size for batch processing
-        order_inserts: true  # Optimize order of inserts
-        order_updates: true  # Optimize order of updates
-        flush_mode: COMMIT  # Use COMMIT flush mode to optimize performance
-        format_sql: true  # For better SQL format logging
-        enable_lazy_load_no_trans: true  # Enable lazy load without transaction if needed
-  sql:
-    init:
-      mode: always
+        format_sql: true
+        jdbc.batch_size: 50
+        hibernate.order_inserts: true
+        hibernate.order_updates: true
+        hibernate.jdbc.time_zone: UTC
+
+  batch:
+    job:
+      enabled: true
+
   eureka:
     instance:
       hostname: localhost
     client:
       service-url:
         defaultZone: http://localhost:9002/eureka
-
-management:
-  tracing:
-    sampling:
-      probability: 1.0
