@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/vemsDB
+    username: postgres
+    password: manager
+    hikari:
+      data-source-properties:
+        stringtype: unspecified
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc.batch_size: 50  # Set batch size for batch processing
+        order_inserts: true  # Optimize order of inserts
+        order_updates: true  # Optimize order of updates
+        flush_mode: COMMIT  # Use COMMIT flush mode to optimize performance
+        format_sql: true  # For better SQL format logging
+        enable_lazy_load_no_trans: true  # Enable lazy load without transaction if needed
+  sql:
+    init:
+      mode: always
+  eureka:
+    instance:
+      hostname: localhost
+    client:
+      service-url:
+        defaultZone: http://localhost:9002/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
